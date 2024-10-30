@@ -32,7 +32,8 @@ def send():
     if not user_input.strip():
         return redirect(url_for('no_data'))
 
-    response = requests.post('http://127.0.0.1:5001/save', json={'data': user_input})
+    # response = requests.post('http://127.0.0.1:5001/save', json={'data': user_input})
+    response = requests.post('http://backend:5001/save', json={'data': user_input})
 
     return render_template_string(f'''
     <html>
@@ -60,7 +61,8 @@ def no_data():
 
 @app.route('/get', methods=['GET'])
 def get_data():
-    response = requests.get('http://127.0.0.1:5001/get')
+    # response = requests.get('http://127.0.0.1:5001/get')
+    response = requests.get('http://backend:5001/get')
 
     return render_template_string(f'''
     <html>
